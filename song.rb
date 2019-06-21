@@ -22,7 +22,6 @@ end
 DataMapper.finalize
 
 get '/songs' do
-	puts " logged in #{session[:admin]}"
 	@songs = Song.all
 	slim :songs	
 end
@@ -31,7 +30,6 @@ end
 # 	slim :show_song
 # end
 get '/songs/new' do
-	puts session[:admin]
   halt(401,'not authorised') unless session[:admin]
 	@song = Song.new
 	slim :new_song

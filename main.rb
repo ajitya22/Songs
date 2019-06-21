@@ -30,10 +30,8 @@ get '/login' do
 	slim :login
 end
 post '/login' do
-	puts "request start"
 	if params[:username] == settings.username && params[:password] == settings.password
 		session[:admin] = true
-		puts "logged in #{session[:admin]}"
 		redirect to('/songs')
 	else
 		session[:admin] = false
